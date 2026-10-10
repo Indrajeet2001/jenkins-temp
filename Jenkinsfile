@@ -52,6 +52,9 @@ pipeline {
                 expression { return params.ENVIRONMENT == 'PROD' }
             }
             steps {
+                input message: "Are you sure you want to deploy to PROD?", 
+                ok: "Apporve"
+
                 echo "Deploying to PROD environment..."
             }
         }  
