@@ -2,21 +2,29 @@ pipeline {
 agent any
 
 stages {
-    stage('Use Custom Node.js') {
+    stage('Show Parameters') {
         steps {
-            script {
-                def nodeHome = tool(
-                    name: 'NodeJS',
-                    type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-                )
-
-                withEnv(["PATH+NODEJS=${nodeHome}\\node"]) {
-                    bat 'node --version'
-                    bat 'npm --version'
-                }
-            }
+            echo `Selected Environment: ${params.ENVIRONMENT}`
+            echo `Run tests: ${params.RUN_TESTS}`
         }
     }
+
+    stage ("Build") {
+        steps {
+            echo "Building the project..."
+        }
+    }
+
+    stage('Test') {
+        steps {
+            bat 'echo Running tests...'  
+        }
+    }
+
+    stage('Deploy') {
+        steps {
+            echo `Deploying to ${params.ENVIRONMENT} environment...`
+        }
 }
 
 }
