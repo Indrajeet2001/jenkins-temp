@@ -4,8 +4,8 @@ agent any
 stages {
     stage('Show Parameters') {
         steps {
-            echo `Selected Environment: ${params.ENVIRONMENT}`
-            echo `Run tests: ${params.RUN_TESTS}`
+            echo "Selected Environment: ${params.ENVIRONMENT}"
+            echo "Run tests: ${params.RUN_TESTS}"
         }
     }
 
@@ -23,7 +23,7 @@ stages {
 
     stage('Deploy') {
         steps {
-            echo `Deploying to ${params.ENVIRONMENT} environment...`
+            echo "Deploying to ${params.ENVIRONMENT} environment..."
         }
 }
 
