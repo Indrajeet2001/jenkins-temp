@@ -16,6 +16,9 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression { return params.RUN_TESTS == true
+            }
             steps {
                 bat 'echo Running tests...'  
             }
